@@ -18,6 +18,10 @@ public class Post {
         this.memberNo = memberNo;
     }
 
+    public Post(Integer postId, String title, String content, int memberNo) {
+        this(postId,null, title, content, memberNo);
+    }
+
     public Post(String title, String content, int memberNo) {
         this(null,null, title, content, memberNo);
     }

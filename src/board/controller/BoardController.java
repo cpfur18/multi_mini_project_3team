@@ -57,7 +57,7 @@ public class BoardController {
                 displayList();
             } else if (input == 1) {
                 if (memberNo == findPost.getMemberNo()) {
-                    System.out.println("게시글을 수정합니다.");
+                    modifyPost(findPost);
                 } else if (admin) {
                     System.out.println("게시글을 삭제합니다.");
                 } else {
@@ -79,4 +79,11 @@ public class BoardController {
         boardService.writePost(title, content, memberNo);
         displayList();
     }
+    private void modifyPost(Post post) {
+        String title = WriteView.getTitle();
+        String content = WriteView.getContent();
+        boardService.modifyPost(new Post(post.getPostId(), title, content, memberNo));
+        displayList();
+    }
+
 }

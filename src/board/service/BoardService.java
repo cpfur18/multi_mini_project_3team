@@ -27,5 +27,9 @@ public class BoardService {
         boardDAO.writePost(post);
     }
 
+    public void modifyPost(Post post) {
+        boardDAO.modifyPost(post);
+    }
+
 
 }

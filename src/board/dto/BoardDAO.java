@@ -60,6 +60,19 @@ public class BoardDAO{
             e.printStackTrace();
         }
     }
+    public void modifyPost(Post post) {
+        String query = "UPDATE BOARD SET " + TITLE_COLUMN + "= ?, " + CONTENT_COLUMN + "= ?, " + POST_DATE_COLUMN + "= SYSDATE " + "WHERE " + POST_ID_COLUMN + "= ?";
+
+        try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, post.getTitle());
+            pstmt.setString(2, post.getContent());
+            pstmt.setInt(3, post.getPostId());
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public Post findOnePost(int postId) {
         List<Post> posts = getAllPosts();
