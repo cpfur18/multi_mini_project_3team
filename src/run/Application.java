@@ -1,13 +1,16 @@
 package run;
 
-import reservation.view.ReservationMenu;
+import board.controller.BoardController;
+import board.view.MenuView;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args){
         // 메인 실행 파일
 
         // Test
-        new ReservationMenu().resMainMenu();
+        BoardController boardController = new BoardController();
+        boardController.run();
+
     }
 
 }
