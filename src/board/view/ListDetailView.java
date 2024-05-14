@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class ListDetailView {
 
     public static void displayList(Post post) {
+
         System.out.println("=========================");
         System.out.print("제목: ");
         System.out.print(post.getTitle() + "\n");

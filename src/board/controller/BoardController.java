@@ -5,6 +5,7 @@ import board.service.BoardService;
 import board.view.ListDetailView;
 import board.view.ListView;
 import board.view.MenuView;
+import board.view.WriteView;
 
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class BoardController {
                 break;
             case 2:
                 // 글쓰기 로직 수행
-                System.out.println("글쓰기 기능을 실행합니다.");
+                writePost();
                 break;
             case 0:
                 // 프로그램 종료
@@ -70,6 +71,12 @@ public class BoardController {
                 }
             }
         }
+    }
 
+    private void writePost() {
+        String title = WriteView.getTitle();
+        String content = WriteView.getContent();
+        boardService.writePost(title, content, memberNo);
+        displayList();
     }
 }

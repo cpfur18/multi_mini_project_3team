@@ -1,4 +1,5 @@
 package board.dto;
+import board.controller.BoardController;
 import board.model.Post;
 
 import java.sql.*;
@@ -44,6 +45,20 @@ public class BoardDAO{
             e.printStackTrace();
         }
         return posts;
+    }
+
+    public void writePost(Post post) {
+        String query = "INSERT INTO BOARD (" + POST_ID_COLUMN + ", " + TITLE_COLUMN + ", " + CONTENT_COLUMN + ", " + MEMBER_NO_COLUMN + ") VALUES (SEQ_BOARD.NEXTVAL, ?, ?, ?)";
+
+        try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, post.getTitle());
+            pstmt.setString(2, post.getContent());
+            pstmt.setInt(3, post.getMemberNo());
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public Post findOnePost(int postId) {
