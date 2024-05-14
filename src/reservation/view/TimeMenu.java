@@ -2,7 +2,7 @@ package reservation.view;
 
 import java.util.Scanner;
 
-public class timeMenu {
+public class TimeMenu {
     private static Scanner sc = new Scanner(System.in); // Scanner 객체 생성
     int answer = 0; // 답변 저장
 
@@ -23,7 +23,7 @@ public class timeMenu {
             System.out.println("│     │ 14:00     │     │ 16:00     │   │");
             System.out.println("│     └───────────┘     └───────────┘   │");
             System.out.println("│                                       │");
-            System.out.println("│     ┌─────1─────┐     ┌─────1─────┐   │");
+            System.out.println("│     ┌─────5─────┐     ┌─────6─────┐   │");
             System.out.println("│     │ 16:00 -   │     │ 18:00 -   │   │");
             System.out.println("│     │ 18:00     │     │ 20:00     │   │");
             System.out.println("│     └───────────┘     └───────────┘   │");
@@ -33,14 +33,16 @@ public class timeMenu {
 
             switch (answer) {
                 case 1:
-                    System.out.println("예약 하기를 선택하셨습니다.");
                     break;
                 case 2:
-                    System.out.println("예약 조회를 선택하셨습니다.");
-
                     break;
-                case 0:
-                    // 회원 메인 화면으로 이동 - 추후 통합 예정
+                case 3:
+
+                case 4:
+
+                case 5:
+
+                case 6:
                     break;
                 default:
                     new ReservationMenu().printErrorMessage();
