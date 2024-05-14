@@ -71,8 +71,8 @@ public class MemberDao {
             //	e.printStackTrace();
          //   throw new MemberException("selectAll 에러 : " + e.getMessage());
         } finally {
-            close(rset);
-            close(stmt);
+//            close(rset);
+//            close(stmt);
         }
         return list;
     }
