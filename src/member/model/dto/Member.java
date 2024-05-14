@@ -23,26 +23,33 @@ public class Member implements Serializable {
 	private Date joinDate;          //가입일
 	private String master;          //y: 관리자 n:일반회원
 
-	//생성자
+
 	public Member() {
-	//
+		// TODO Auto-generated constructor stub
 	}
 
-	//가입일(joinDate) SYSDATE 처리하기 위해 매개변수로 받지 않음
-	public Member(String id, String pw, String userName, String phone) {
+	public Member(String id, String pw) {
+		super();
+		this.id = id;
+		this.pw = pw;
+	}
+
+	public Member(String id, String pw, String userName, String phone, Date joinDate) {
 		super();
 		this.id = id;
 		this.pw = pw;
 		this.userName = userName;
 		this.phone = phone;
+		this.joinDate = joinDate;
 	}
 
-	public Member(String id, String pw, String userName, String phone, String master) {
+	public Member(String id, String pw, String userName, String phone, Date joinDate, String master) {
 		super();
 		this.id = id;
 		this.pw = pw;
 		this.userName = userName;
 		this.phone = phone;
+		this.joinDate = joinDate;
 		this.master = master;
 	}
 
@@ -91,9 +98,13 @@ public class Member implements Serializable {
 		this.joinDate = joinDate;
 	}
 
-	//Master Get
+	//Master Get & Set
 	public String getMaster() {
 		return master;
+	}
+
+	public void setMaster(String master) {
+		this.master = master;
 	}
 
 	public String toString() {

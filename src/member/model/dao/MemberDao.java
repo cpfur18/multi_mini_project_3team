@@ -11,8 +11,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import static com.multi.jdbc.common.JDBCTemplate.close;
-
 public class MemberDao {
 
     private Properties prop = null;
