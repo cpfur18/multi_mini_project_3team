@@ -1,7 +1,7 @@
-package com.multi.jdbc.member.controller;
+package member.controller;
 
-import com.multi.jdbc.member.model.dto.Member;
-import com.multi.jdbc.member.service.MemberService;
+import member.model.dto.Member;
+import member.service.MemberService;
 
 public class MemberController {
 

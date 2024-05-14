@@ -1,7 +1,7 @@
-package com.multi.jdbc.member.view;
+package member.view;
 
-import com.multi.jdbc.member.controller.MemberController;
-import com.multi.jdbc.member.model.dto.Member;
+import member.controller.MemberController;
+import member.model.dto.Member;
 
 import java.util.Scanner;
 

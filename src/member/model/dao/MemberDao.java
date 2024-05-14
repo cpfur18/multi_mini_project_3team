@@ -1,6 +1,6 @@
-package com.multi.jdbc.member.model.dao;
+package member.model.dao;
 
-import com.multi.jdbc.member.model.dto.Member;
+import member.model.dto.Member;
 
 import java.io.FileReader;
 import java.io.IOException;

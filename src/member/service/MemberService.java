@@ -1,12 +1,6 @@
-package com.multi.jdbc.member.service;
+package member.service;
 
-import com.multi.jdbc.member.model.dao.MemberDao;
-import com.multi.jdbc.member.model.dto.Member;
-
-import java.sql.Connection;
-import java.util.ArrayList;
-
-import static com.multi.jdbc.common.JDBCTemplate.getConnection;
+import member.model.dao.MemberDao;
 
 /* Service 클래스에서 메소드 작성 방법
  * 1) Controller로 부터 인자를 전달받음
@@ -22,13 +16,13 @@ public class MemberService {
         memberDao = new MemberDao();
     }
 
-    public ArrayList<Member> selectAll() {
-
-        Connection conn = getConnection();
-        ArrayList<Member> list = memberDao.selectAll(conn);
-
-        return list;
-
-
-    }
+//    public ArrayList<Member> selectAll() {
+//
+////        Connection conn = getConnection();
+////        ArrayList<Member> list = memberDao.selectAll(conn);
+//
+////        return list;
+//
+//
+//    }
 }

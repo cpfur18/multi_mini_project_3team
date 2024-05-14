@@ -1,4 +1,4 @@
-package com.multi.jdbc.member.model.dto;
+package member.model.dto;
 
 
 import java.io.Serializable;
@@ -25,7 +25,7 @@ public class Member implements Serializable {
 
 	//생성자
 	public Member() {
-//		 TODO Auto-generated constructor stub
+	//
 	}
 
 	//가입일(joinDate) SYSDATE 처리하기 위해 매개변수로 받지 않음
