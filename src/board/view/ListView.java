@@ -4,6 +4,7 @@ import board.controller.BoardController;
 import board.model.Post;
 import board.service.BoardService;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,9 +16,9 @@ public final class ListView {
         if (posts.size() == 0) {
             System.out.println("등록된 게시글이 없습니다.");
         } else {
-            for (int i = 0; i < posts.size(); i++) {
-                Post post = posts.get(i);
-                System.out.println(post.getPostId() + ". " + post.getTitle());
+            for (Post post : posts) {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                System.out.println(post.getPostId() + ". " + post.getTitle() + " - " + post.getDate().format(formatter));
             }
         }
         System.out.println("—----------------------------------");

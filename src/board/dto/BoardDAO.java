@@ -2,6 +2,7 @@ package board.dto;
 import board.model.Post;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class BoardDAO{
             while (rs.next()) {
                 int postId = rs.getInt(POST_ID_COLUMN);
                 String title = rs.getString(TITLE_COLUMN);
-                Date date = rs.getDate(POST_DATE_COLUMN);
+                LocalDate date = rs.getDate(POST_DATE_COLUMN).toLocalDate();
                 String content = rs.getString(CONTENT_COLUMN);
                 int memberNo = rs.getInt(MEMBER_NO_COLUMN);
 

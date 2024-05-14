@@ -1,15 +1,16 @@
 package board.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Post {
     private final int postId;
-    private final Date date;
+    private final LocalDate date;
     private final String title;
     private final String content;
     private final int memberNo;
 
-    public Post(int postId, Date date, String title, String content, int memberNo) {
+    public Post(int postId, LocalDate date, String title, String content, int memberNo) {
         this.postId = postId;
         this.date = date;
         this.title = title;
@@ -21,7 +22,7 @@ public class Post {
         return postId;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 

@@ -3,6 +3,7 @@ package board.view;
 import board.controller.BoardController;
 import board.model.Post;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class ListDetailView {
@@ -11,6 +12,9 @@ public class ListDetailView {
         System.out.println("=========================");
         System.out.print("제목: ");
         System.out.print(post.getTitle() + "\n");
+        System.out.print("작성일: ");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        System.out.print(post.getDate().format(formatter) + "\n");
         System.out.println("—------------------------");
         System.out.println(post.getContent());
         System.out.println("—------------------------");
