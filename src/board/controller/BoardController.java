@@ -59,12 +59,14 @@ public class BoardController {
                     deletePost(findPost.getPostId());
                 } else {
                     System.out.println("권한이 없습니다.");
+                    displayList();
                 }
             } else if (input == 2) {
                 if (admin) {
                     deletePost(findPost.getPostId());
                 } else {
                     System.out.println("권한이 없습니다.");
+                    displayList();
                 }
             }
         }
