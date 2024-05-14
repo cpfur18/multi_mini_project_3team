@@ -3,7 +3,6 @@ package com.multi.jdbc.member.view;
 import com.multi.jdbc.member.controller.MemberController;
 import com.multi.jdbc.member.model.dto.Member;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class MemberMenu {
@@ -15,77 +14,68 @@ public class MemberMenu {
 
 
 
+    //1. 메인페이지
     public void mainMenu() {
         int choice;
 
         do {
-            System.out.println("\n*******회원관리프로그램********");
-            System.out.println("1.회원 전체 조회");// SELECT
-            System.out.println("2.회원 아이디 조회");// SELECT
-            System.out.println("3.회원 이름 조회");// SELECT
-            System.out.println("4.회원 가입");// INSERT
-            System.out.println("5.회원 정보 변경");// UPDATE
-            System.out.println("6.회원 탈퇴");// DELETE
-            System.out.println("9.프로그램 끝내기");// 종료
-            System.out.println("번호선택 : ");
+            System.out.println("┌───────────────────────────────────────┐");
+            System.out.println("│                    카페 예약 관리 서비스 │");
+            System.out.println("│              **티데이**                │");
+            System.out.println("│                                       │");
+            System.out.println("│                                       │");
+            System.out.println("│                                       │");
+            System.out.println("│                                       │");
+            System.out.println("│                                       │");
+            System.out.println("│                                       │");
+            System.out.println("│                                       │");
+            System.out.println("│                                       │");
+            System.out.println("│  1.로그인                              │");
+            System.out.println("│  2.회원가입                            │");
+            System.out.println("└───────────────────────────────────────┘");
+            System.out.println("번호를 선택하세요 : ");
 
             choice = sc.nextInt();
 
             switch (choice) {
                 case 1:
-                    memberController.selectAll();
+                    memberController.loginAccount(inputId(), inputPw());
                     break;
                 case 2:
-               //     memberController.selectOne(inputMemberId());
-                    break;
-                case 3:
-                    //memberController.selectByName(inputMemberName());
-                    break;
-                case 4:
-             //       memberController.insertMember(inputMember());
-                    break;
-                case 5:
-              //      memberController.updateMember(updateMember());
-                    break;
-                case 6:
-               //     memberController.deleteMember(inputMemberId());
-                    break;
-
-                case 7:
-               //     memberController.selectAllDeleteMember();
-                    break;
-                case 9:
-                    System.out.println("정말로 끝내시겠습니까??(y/n)");
-                    if ('y' == sc.next().toLowerCase().charAt(0)) {
-                  //      memberController.exitProgram();
-                        return;
-                    }
-
+                    memberController.createAccount(inputMember());
                     break;
 
                 default:
                     System.out.println("번호를 잘못입력하였습니다.");
             }
-
         } while (true);
     }
-    public void displayMemberList(List<Member> list) {
-        System.out.println("\n조회된 전체 회원정보는 다음과 같습니다.");
-        System.out.println("\n아이디\t이름\t성별\t나이\t이메일\t전화번호\t주소\t취미\t가입일");
-        System.out.println("----------------------------------------------------------");
 
-        for(Member m: list) {
-            System.out.println(m);
-        }
 
+    // 회원가입: 정보 입력
+    public Member inputMember() {
+        System.out.print("회원 아이디 : ");
+        String id = sc.nextLine();
+        System.out.print("암호 : ");
+        String pw = sc.nextLine();
+        System.out.print("이름 : ");
+        String userName = sc.nextLine();
+        System.out.print("전화번호 : ");
+        String phone = sc.nextLine();
+
+        Member m = new Member(id, pw, userName, phone);
+        return m;
     }
 
-
-
-
-    public void displayNoData() {
-        System.out.println("조회된 데이터가 없습니다.");
-
-
+    // 회원 아이디 입력
+    public String inputId() {
+        System.out.print("아이디 입력: ");
+        return sc.nextLine();
     }
+    // 회원 비밀번호 입력
+    public String inputPw() {
+        System.out.print("비밀번호 입력: ");
+        return sc.nextLine();
+    }
+
 }

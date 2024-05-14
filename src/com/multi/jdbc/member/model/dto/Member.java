@@ -4,159 +4,99 @@ package com.multi.jdbc.member.model.dto;
 import java.io.Serializable;
 import java.sql.Date;
 
-/* 데이터 베이스 테이블 Member 의 각 컬럼값 저장용 객체 : 한행의 정보 저장
- * DTO Data Transfer Object
-
- * 1. 모든 필드는 반드시 private 이여야한다.
- * 2. 기본 생성자와 매개변수 있는 생성자 필요 
- * 3. 모든 필드에대해서 getter/setter 필요
- * 4. 직렬화 처리 (네트워크상 데이터 처리를 위함 )
+/*
+ * ID               VARCHAR2(20)
+ * PW               VARCHAR2(10)
+ * USERNAME         VARCHAR2(20)
+ * PHONE            VARCHAR2(15)
+ * JOIN_DATE        DATE
+ * MASTER           CHAR
  */
 public class Member implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2304690199893905221L;
-	
-	//1. 필드변수 컬럼에 대응~
-		private String userId;
-		private String password;
-		private String userName;
-		private String gender;
-		private int age;
-		private String email;
-		private String phone;
-		private String address;
-		private String hobby;
-		private Date enrollDate;
-		
-		
-		public Member() {
-			// TODO Auto-generated constructor stub
-		}
 
+	private String id;
+	private String pw;
+	private String userName;
+	private String phone;
+	private Date joinDate;          //가입일
+	private String master;          //y: 관리자 n:일반회원
 
-		public Member(String userId, String password, String userName, String gender, int age, String email,
-                      String phone, String address, String hobby, Date enrollDate) {
-			super();
-			this.userId = userId;
-			this.password = password;
-			this.userName = userName;
-			this.gender = gender;
-			this.age = age;
-			this.email = email;
-			this.phone = phone;
-			this.address = address;
-			this.hobby = hobby;
-			this.enrollDate = enrollDate;
-		}
+	//생성자
+	public Member() {
+//		 TODO Auto-generated constructor stub
+	}
 
+	//가입일(joinDate) SYSDATE 처리하기 위해 매개변수로 받지 않음
+	public Member(String id, String pw, String userName, String phone) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.userName = userName;
+		this.phone = phone;
+	}
 
-		public String getUserId() {
-			return userId;
-		}
+	public Member(String id, String pw, String userName, String phone, String master) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.userName = userName;
+		this.phone = phone;
+		this.master = master;
+	}
 
+	//ID Get & Set
+	public String getId() {
+		return id;
+	}
 
-		public void setUserId(String userId) {
-			this.userId = userId;
-		}
+	public void setId(String userId) {
+		this.id = id;
+	}
 
+	//PW Get & Set
+	public String getPw() {
+		return pw;
+	}
 
-		public String getPassword() {
-			return password;
-		}
+	public void setPassword(String password) {
+		this.pw = password;
+	}
 
+	//UserName Get & Set
+	public String getUserName() {
+		return userName;
+	}
 
-		public void setPassword(String password) {
-			this.password = password;
-		}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
+	//Phone Get & Set
+	public String getPhone() {
+		return phone;
+	}
 
-		public String getUserName() {
-			return userName;
-		}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
+	//JoinDate Get & Set
+	public Date getJoinDate() {
+		return joinDate;
+	}
 
-		public void setUserName(String userName) {
-			this.userName = userName;
-		}
+	public void setJoinDate(Date joinDate) {
+		this.joinDate = joinDate;
+	}
 
+	//Master Get
+	public String getMaster() {
+		return master;
+	}
 
-		public String getGender() {
-			return gender;
-		}
-
-
-		public void setGender(String gender) {
-			this.gender = gender;
-		}
-
-
-		public int getAge() {
-			return age;
-		}
-
-
-		public void setAge(int age) {
-			this.age = age;
-		}
-
-
-		public String getEmail() {
-			return email;
-		}
-
-
-		public void setEmail(String email) {
-			this.email = email;
-		}
-
-
-		public String getPhone() {
-			return phone;
-		}
-
-
-		public void setPhone(String phone) {
-			this.phone = phone;
-		}
-
-
-		public String getAddress() {
-			return address;
-		}
-
-
-		public void setAddress(String address) {
-			this.address = address;
-		}
-
-
-		public String getHobby() {
-			return hobby;
-		}
-
-
-		public void setHobby(String hobby) {
-			this.hobby = hobby;
-		}
-
-
-		public Date getEnrollDate() {
-			return enrollDate;
-		}
-
-
-		public void setEnrollDate(Date enrollDate) {
-			this.enrollDate = enrollDate;
-		}
-		
-		
-		public String toString() {
-			return userId+", "+password+", "+userName+", "+gender +", "+age 
-					+", "+email+", "+phone+", "+address+", "+hobby +", "+enrollDate;
-			
-			
-		}
+	public String toString() {
+		return "아이디: " + id + " 비밀번호: " + pw + " 닉네임: " + userName + " 전화번호 " + phone + " 가입일: " + joinDate + " 구분: " + master;
+	}
 }

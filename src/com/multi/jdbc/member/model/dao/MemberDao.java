@@ -56,16 +56,12 @@ public class MemberDao {
             while (rset.next()) {
 
                 Member m = new Member();
-                m.setUserId(rset.getString("USERID"));
-                m.setPassword(rset.getString("PASSWORD"));
+                m.setId(rset.getString("ID"));
+                m.setPassword(rset.getString("PW"));
                 m.setUserName(rset.getString("USERNAME"));
-                m.setGender(rset.getString("GENDER"));
-                m.setAge(rset.getInt("AGE"));
-                m.setEmail(rset.getString("EMAIL"));
                 m.setPhone(rset.getString("PHONE"));
-                m.setAddress(rset.getString("ADDRESS"));
-                m.setHobby(rset.getString("HOBBY"));
-                m.setEnrollDate(rset.getDate("ENROLLDATE"));
+
+                m.setJoinDate(rset.getDate("JOIN_DATE"));
 
                 list.add(m);
             }
