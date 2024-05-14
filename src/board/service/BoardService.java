@@ -2,9 +2,7 @@ package board.service;
 
 import board.dto.BoardDAO;
 import board.model.Post;
-import board.view.MenuView;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class BoardService {

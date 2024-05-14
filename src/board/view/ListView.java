@@ -1,8 +1,6 @@
 package board.view;
 
-import board.controller.BoardController;
 import board.model.Post;
-import board.service.BoardService;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;

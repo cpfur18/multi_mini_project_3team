@@ -2,10 +2,7 @@ package board.controller;
 
 import board.model.Post;
 import board.service.BoardService;
-import board.view.ListDetailView;
-import board.view.ListView;
-import board.view.MenuView;
-import board.view.WriteView;
+import board.view.*;
 
 import java.util.List;
 

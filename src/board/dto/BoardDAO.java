@@ -1,5 +1,4 @@
 package board.dto;
-import board.controller.BoardController;
 import board.model.Post;
 
 import java.sql.*;
