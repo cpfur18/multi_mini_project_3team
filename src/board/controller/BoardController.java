@@ -59,13 +59,13 @@ public class BoardController {
                 if (memberNo == findPost.getMemberNo()) {
                     modifyPost(findPost);
                 } else if (admin) {
-                    System.out.println("게시글을 삭제합니다.");
+                    deletePost(findPost.getPostId());
                 } else {
                     System.out.println("권한이 없습니다.");
                 }
             } else if (input == 2) {
                 if (admin) {
-                    System.out.println("게시글을 삭제합니다.");
+                    deletePost(findPost.getPostId());
                 } else {
                     System.out.println("권한이 없습니다.");
                 }
@@ -83,6 +83,11 @@ public class BoardController {
         String title = WriteView.getTitle();
         String content = WriteView.getContent();
         boardService.modifyPost(new Post(post.getPostId(), title, content, memberNo));
+        displayList();
+    }
+
+    private void deletePost(Integer postId) {
+        boardService.deletePost(postId);
         displayList();
     }
 

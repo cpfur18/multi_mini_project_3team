@@ -31,5 +31,9 @@ public class BoardService {
         boardDAO.modifyPost(post);
     }
 
+    public void deletePost(Integer postId) {
+        boardDAO.deletePost(postId);
+    }
+
 
 }

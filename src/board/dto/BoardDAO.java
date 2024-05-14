@@ -13,6 +13,7 @@ public class BoardDAO{
     String password = "caf";
 
     // 게시글 테이블의 컬럼명 정의
+    private static final String TABLE_NAME = "BOARD";
     private static final String POST_ID_COLUMN = "POST_ID";
     private static final String POST_DATE_COLUMN = "POST_DATE";
     private static final String TITLE_COLUMN = "TITLE";
@@ -26,7 +27,7 @@ public class BoardDAO{
 
     public List<Post> getAllPosts() {
         List<Post> posts = new ArrayList<>();
-        String query = "SELECT * FROM BOARD ORDER BY POST_ID";
+        String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY POST_ID";
 
         try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query);
@@ -48,9 +49,10 @@ public class BoardDAO{
     }
 
     public void writePost(Post post) {
-        String query = "INSERT INTO BOARD (" + POST_ID_COLUMN + ", " + TITLE_COLUMN + ", " + CONTENT_COLUMN + ", " + MEMBER_NO_COLUMN + ") VALUES (SEQ_BOARD.NEXTVAL, ?, ?, ?)";
+        String query = "INSERT INTO " + TABLE_NAME + " (" + POST_ID_COLUMN + ", " + TITLE_COLUMN + ", " + CONTENT_COLUMN + ", " + MEMBER_NO_COLUMN + ") VALUES (SEQ_BOARD.NEXTVAL, ?, ?, ?)";
 
-        try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
             pstmt.setString(1, post.getTitle());
             pstmt.setString(2, post.getContent());
             pstmt.setInt(3, post.getMemberNo());
@@ -61,12 +63,26 @@ public class BoardDAO{
         }
     }
     public void modifyPost(Post post) {
-        String query = "UPDATE BOARD SET " + TITLE_COLUMN + "= ?, " + CONTENT_COLUMN + "= ?, " + POST_DATE_COLUMN + "= SYSDATE " + "WHERE " + POST_ID_COLUMN + "= ?";
+        String query = "UPDATE " + TABLE_NAME + " SET " + TITLE_COLUMN + "= ?, " + CONTENT_COLUMN + "= ?, " + POST_DATE_COLUMN + "= SYSDATE " + "WHERE " + POST_ID_COLUMN + "= ?";
 
-        try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
             pstmt.setString(1, post.getTitle());
             pstmt.setString(2, post.getContent());
             pstmt.setInt(3, post.getPostId());
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deletePost(Integer postId) {
+        String query = "DELETE FROM " + TABLE_NAME + " WHERE " + POST_ID_COLUMN + " = ?";
+
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setInt(1, postId);
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
