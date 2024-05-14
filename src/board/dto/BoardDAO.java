@@ -26,7 +26,7 @@ public class BoardDAO{
 
     public List<Post> getAllPosts() {
         List<Post> posts = new ArrayList<>();
-        String query = "SELECT * FROM BOARD";
+        String query = "SELECT * FROM BOARD ORDER BY POST_ID";
 
         try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query);
