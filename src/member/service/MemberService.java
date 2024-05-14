@@ -16,13 +16,24 @@ public class MemberService {
         memberDao = new MemberDao();
     }
 
-//    public ArrayList<Member> selectAll() {
+//    public int loginAccount(Member member) {
+//        Connection conn = getConnection();
+//        int result = memberDao.loginAccount(conn, member);
 //
-////        Connection conn = getConnection();
-////        ArrayList<Member> list = memberDao.selectAll(conn);
+//        if (result > 0) commit(conn);
+//        else rollback(conn);
 //
-////        return list;
-//
-//
+//        return result;
 //    }
+
+//    public int createAccount(Member member) {
+//        Connection conn = getConnection();
+//        int result = memberDao.insertMember(conn, member);
+//
+//        if (result > 0) commit(conn);
+//        else rollback(conn);
+//
+//        return result;
+//    }
+
 }
