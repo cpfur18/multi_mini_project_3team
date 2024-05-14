@@ -1,18 +1,18 @@
-package board.dto;
-import board.model.Post;
+package notice.dto;
+import notice.model.Post;
 
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BoardDAO{
+public class NoticeDAO {
     String url = "jdbc:oracle:thin:@localhost:1521:XE";
     String username = "caf";
     String password = "caf";
 
     // 게시글 테이블의 컬럼명 정의
-    private static final String TABLE_NAME = "BOARD";
+    private static final String TABLE_NAME = "NOTICE";
     private static final String POST_ID_COLUMN = "POST_ID";
     private static final String POST_DATE_COLUMN = "POST_DATE";
     private static final String TITLE_COLUMN = "TITLE";
@@ -48,7 +48,7 @@ public class BoardDAO{
     }
 
     public void writePost(Post post) {
-        String query = "INSERT INTO " + TABLE_NAME + " (" + POST_ID_COLUMN + ", " + TITLE_COLUMN + ", " + CONTENT_COLUMN + ", " + MEMBER_NO_COLUMN + ") VALUES (SEQ_BOARD.NEXTVAL, ?, ?, ?)";
+        String query = "INSERT INTO " + TABLE_NAME + " (" + POST_ID_COLUMN + ", " + TITLE_COLUMN + ", " + CONTENT_COLUMN + ", " + MEMBER_NO_COLUMN + ") VALUES (SEQ_NOTICE.NEXTVAL, ?, ?, ?)";
 
         try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -89,7 +89,7 @@ public class BoardDAO{
         }
     }
 
-    public Post findOnePost(int postId) {
+    public Post findOnePost(Integer postId) {
         List<Post> posts = getAllPosts();
         for (Post post : posts) {
             if (post.getPostId() == postId) {

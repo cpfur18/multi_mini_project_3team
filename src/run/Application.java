@@ -1,15 +1,14 @@
 package run;
 
-import board.controller.BoardController;
-import board.view.MenuView;
+import notice.controller.NoticeController;
 
 public class Application {
     public static void main(String[] args){
         // 메인 실행 파일
 
         // Test
-        BoardController boardController = new BoardController();
-        boardController.run();
+        NoticeController noticeController = new NoticeController();
+        noticeController.run();
 
     }
 

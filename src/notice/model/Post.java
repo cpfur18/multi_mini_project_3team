@@ -1,7 +1,6 @@
-package board.model;
+package notice.model;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Post {
     private final Integer postId;

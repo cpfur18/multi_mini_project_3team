@@ -1,6 +1,7 @@
-package board.view;
+package notice.view;
 
-import board.model.Post;
+import notice.controller.NoticeController;
+import notice.model.Post;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -20,13 +21,16 @@ public final class ListView {
             }
         }
         System.out.println("—----------------------------------");
-        System.out.println("0. 게시글 관리");
+        System.out.println("0. 돌아가기");
+        if (NoticeController.admin) {
+            System.out.println("w. 공지사항 쓰기");
+        }
         System.out.println("=========================");
-        System.out.print("번호를 입력하세요: ");
+        System.out.print("명령어를 입력하세요: ");
     }
 
-    public static int getUserInput() {
+    public static String getUserInput() {
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+        return scanner.nextLine();
     }
 }

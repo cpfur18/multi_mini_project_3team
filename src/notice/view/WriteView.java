@@ -1,4 +1,4 @@
-package board.view;
+package notice.view;
 
 import java.util.Scanner;
 
