@@ -7,10 +7,10 @@ import java.util.Scanner;
 public class MyPage {
 
     private static Scanner sc = new Scanner(System.in);
-    private MemberController memberController = new MemberController();
+    private static MemberController memberController = new MemberController();
 
-    //2-2. 메인페이지 - 회원페이지 - [마이페이지]
-    public void mypage(){
+    //메인페이지 - 회원페이지 - [마이페이지]
+    public static void mypage(){
         int choice;
 
         do {
@@ -32,18 +32,18 @@ public class MyPage {
 
             choice = sc.nextInt();
 
-            switch (choice) {
+            switch (choice) { //deleteAccount() infoAccount() updateAccount()
                 case 1:
-//                    memberController.deleteAccount();
+                    memberController.deleteAccount();
                     break;
                 case 2:
-//                    memberController.infoAccount();
+                    memberController.infoAccount();
                     break;
                 case 3:
-//                    memberController.updateAccount();
+                    memberController.updateAccount();
                     break;
                 case 0:
-//                    memberPage.open();
+                    MemberMenu.memberMenu();
                     break;
 
                 default:

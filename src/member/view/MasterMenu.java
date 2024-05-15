@@ -10,7 +10,7 @@ public class MasterMenu {
     private MemberController memberController = new MemberController();
 
     //3. 메인페이지 - 관리자페이지 MasterMenu
-    public void masterMenu(){
+    public static void masterMenu(){
         int choice;
 
         do {
@@ -35,7 +35,7 @@ public class MasterMenu {
 
             switch (choice) {
                 case 1:
-//                    memberController.masterpage();
+                    MasterPage.masterpage();
                     break;
                 case 2:
                     //게시글관리
@@ -54,4 +54,6 @@ public class MasterMenu {
             }
         } while (true);
     }
+
+
 }
