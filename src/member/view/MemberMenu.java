@@ -1,7 +1,6 @@
 package member.view;
 
 import member.controller.MemberController;
-import member.model.dto.Member;
 
 import java.util.Scanner;
 
@@ -11,7 +10,7 @@ public class MemberMenu {
     private MemberController memberController = new MemberController();
 
     //2. 메인페이지 - 회원페이지
-    public void memberMenu(Member m){
+    public static void memberMenu(){
         int choice;
 
         do {
@@ -36,7 +35,7 @@ public class MemberMenu {
 
             switch (choice) {
                 case 1:
-//                    memberController.mypage();
+                    MyPage.mypage();
                     break;
                 case 2:
                     //게시글

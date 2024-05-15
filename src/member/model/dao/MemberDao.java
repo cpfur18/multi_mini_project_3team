@@ -2,132 +2,60 @@ package member.model.dao;
 
 import member.model.dto.Member;
 
-import java.io.FileReader;
-import java.io.IOException;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
 
 public class MemberDao {
 
-    private Properties prop = null;
+    String url = "jdbc:oracle:thin:@localhost:1521:XE";
+    String username = "caf";
+    String password = "caf";
 
+    // 멤버 테이블의 컬럼명 정의
+    private static final String MEMBER_NO_COLUMN = "MEMBER_NO";
+    private static final String ID = "ID";
+    private static final String PW = "PW";
+    private static final String USERNAME = "USERNAME";
+    private static final String PHONE = "PHONE";
+    private static final String MASTER = "MASTER";
 
-    public MemberDao() {
-
-
-        try {
-            prop = new Properties();
-            prop.load(new FileReader("resources/query.properties"));
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+    // 데이터베이스 연결을 위한 메서드
+    private Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(url, username, password);
     }
 
-
+    //로그인
     public int loginAccount(Connection conn, Member member) {
         int result = 0;
 
-        PreparedStatement ps = null;
 
-        String sql = prop.getProperty("loginAccount"); //로그인
-
-
-        try {
-            ps = conn.prepareStatement(sql);
-
-            ps.setString(1, member.getId());
-            ps.setString(2, member.getPw());
-
-            result = ps.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-//            close(ps);
-        }
 
         return result;
     }
 
-    public int insertMember(Connection conn, Member member) {
+    //회원가입
+    public int createAccount(Connection conn, Member member) {
 
         int result = 0;
 
-        PreparedStatement ps = null;
 
-        String sql = prop.getProperty("insertMember"); ////회원 가입
-
-        try {
-            ps = conn.prepareStatement(sql);
-
-            ps.setString(1, member.getId());
-            ps.setString(2, member.getPw());
-            ps.setString(3, member.getUserName());
-            ps.setString(4, member.getPhone());
-
-            result = ps.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-//            close(ps);
-        }
 
         return result;
     }
 
+    //deleteMember() infoMember() updateMember()
+    //회원 삭제
 
-    public int updateMember(Connection conn, Member member) {
+    //회원 정보 조회
 
-        int result = 0;
+    //회원 정보 수정
 
-        PreparedStatement ps = null;
+    //deleteAccount() infoAccount() updateAccount()
+    //회원 탈퇴
 
-        String sql = prop.getProperty("updateMember"); //회원 정보 수정
+    //회원 정보 조회
 
-        try {
-            ps = conn.prepareStatement(sql);
+    //회원 정보 수정
 
-            ps.setString(1, member.getPw());
-            ps.setString(2, member.getPhone());
-            ps.setString(3, member.getUserName());
-            ps.setString(4, member.getId());
-
-
-            result = ps.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-//            close(ps);
-        }
-
-        return result;
-    }
-
-    public int deleteMember(Connection conn, String memberId) {
-        int result = 0;
-
-        PreparedStatement ps = null;
-
-        String sql = prop.getProperty("deleteMember"); //회원 삭제
-
-        try {
-            ps = conn.prepareStatement(sql);
-
-            ps.setString(1, memberId);
-
-            result = ps.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-//            close(ps);
-        }
-
-        return result;
-    }
 }

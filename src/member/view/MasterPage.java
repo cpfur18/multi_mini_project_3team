@@ -9,7 +9,10 @@ public class MasterPage {
     private static Scanner sc = new Scanner(System.in);
     private MemberController memberController = new MemberController();
 
-    //3-3. 메인페이지 - 관리자페이지 - [회원관리 Masterpage]
+    public static void masterpage() {
+    }
+
+    //메인페이지 - 관리자페이지 - [회원관리 Masterpage]
     public void masterPage(){
         int choice;
 
@@ -32,18 +35,18 @@ public class MasterPage {
 
             choice = sc.nextInt();
 
-            switch (choice) {
+            switch (choice) { //deleteMember() infoMember() updateMember()
                 case 1:
-//                    memberController.masterpage();
+                    memberController.deleteMember();
                     break;
                 case 2:
-//                    memberController.infoAccountAll();
+                    memberController.infoMember();
                     break;
                 case 3:
-//                    memberController.updateAccountOne();
+                    memberController.updateMember();
                     break;
                 case 0:
-//                    masterMenu.open();
+                    MasterMenu.masterMenu();
                     break;
                 default:
                     System.out.println("번호를 잘못입력하였습니다.");

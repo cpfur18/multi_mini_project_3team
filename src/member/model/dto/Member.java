@@ -2,7 +2,6 @@ package member.model.dto;
 
 
 import java.io.Serializable;
-import java.util.Objects;
 
 /*
  * ID               VARCHAR2(20)
@@ -26,20 +25,14 @@ public class Member implements Serializable {
         // TODO Auto-generated constructor stub
     }
 
+    //ID, PW
     public Member(String id, String pw) {
         super();
         this.id = id;
         this.pw = pw;
     }
 
-    public Member(String id, String pw, String userName, String phone) {
-        super();
-        this.id = id;
-        this.pw = pw;
-        this.userName = userName;
-        this.phone = phone;
-    }
-
+    //ID, PW, USERNAME, PHONE, MASTER 'N'
     public Member(String id, String pw, String userName, String phone, char master) {
         super();
         this.id = id;
@@ -95,21 +88,7 @@ public class Member implements Serializable {
         this.master = master;
     }
 
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Member other = (Member) obj;
-        return Objects.equals(id, other.id) && Objects.equals(userName, other.userName)
-                && Objects.equals(phone, other.phone);
-    }
-
     public String toString() {
-        return "아이디: " + id + " 비밀번호: " + pw + " 닉네임: " + userName + " 전화번호 " + phone + " 구분: " + master;
+        return "아이디: " + id + " 비밀번호: " + pw + " 닉네임: " + userName + " 전화번호 " + phone + " 관리자 권한: " + master;
     }
 }
