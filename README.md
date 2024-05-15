@@ -13,7 +13,9 @@
 
 <br>
 
-## 참고 링크 - 추후 삭제 예정
+## 참고 링크
+[유스케이스 링크](https://drive.google.com/file/d/1MBzcero1d2Ge1sVb1JYhN2gFe2f3YLTE/view?usp=drive_link)
+
 [DB 설계 링크](https://docs.google.com/spreadsheets/d/1Fs15gnmCNEFzWG2tW9LbcG5Lje6F4Iyx-JQa_zTo_m0/edit?usp=sharing)
 
 [ERD 설계 링크](https://www.erdcloud.com/d/tXTLqXPbpZJM64ok2)
