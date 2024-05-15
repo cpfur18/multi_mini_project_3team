@@ -14,14 +14,13 @@ public class SeatMenu {
 
     public void seatMenu(String timeCode, String service) { // 좌석 선택 화면
 
-        ArrayList<Seat> seatList = seatConrtoller.selectAll(timeCode, service);
         String pattern = "[A-C][1-9]"; // 정규식 사용을 위한 변수
 
 
         System.out.println("╔═══════════════════════ 좌석 예약 ═══════════════════════╗");
         System.out.println("║   |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  ║");
         System.out.println("║─────────────────────────────────────────────────────────║");
-        display(seatList);
+        isService(timeCode, service);
         System.out.println("╚═════════════════════════════════════════════════════════╝");
 
         while (true) {
@@ -29,8 +28,9 @@ public class SeatMenu {
             String answer = sc.next();
 
             if (answer.matches(pattern)) { // 정규식에 맞는지 확인
-                System.out.println("");
-                // 여기에 원하는 동작 추가
+                System.out.println(answer + " 좌석을 예약 하셨습니다.");
+                System.out.println("상품 선택 화면으로 이동합니다.");
+
                 break;
             } else {
                 System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
@@ -57,5 +57,16 @@ public class SeatMenu {
             System.out.println();
             System.out.println("║─────────────────────────────────────────────────────────║");
         }
+    }
+
+    public boolean isService(String timeCode, String service) {
+        if(service == null) {
+            ArrayList<Seat> seatList = seatConrtoller.selectAll(timeCode);
+            display(seatList);
+        } else {
+            ArrayList<Seat> seatList = seatConrtoller.selectAll2(timeCode, service);
+            display(seatList);
+        }
+        return true;
     }
 }

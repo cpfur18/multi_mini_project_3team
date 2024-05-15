@@ -1,6 +1,6 @@
 package reservation.model.dao;
 
-import common.excption.TimeException;
+import common.excption.Exception;
 import reservation.model.dto.Time;
 
 import java.io.FileReader;
@@ -25,7 +25,7 @@ public class TimeDao {
         }
     }
 
-    public Time selectOne(Connection conn, String timeCode) throws TimeException {
+    public Time selectOne(Connection conn, String timeCode) throws Exception {
         Time rsDto = null;
 
         PreparedStatement ps = null;
@@ -46,7 +46,7 @@ public class TimeDao {
             }
 
         } catch (SQLException e) {
-            throw new TimeException(e.getMessage());
+            throw new Exception(e.getMessage());
 
         } finally {
             close(ps);

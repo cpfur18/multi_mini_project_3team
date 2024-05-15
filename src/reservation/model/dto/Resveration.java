@@ -15,8 +15,7 @@ public class Resveration implements Serializable {
     private Date updDate;
     private Date delDate;
 
-    public Resveration() {
-    }
+    public Resveration() {}
 
     public Resveration(int rsvNo, int rsvMemberNo, String rsvSeatCode, String rsvTimeCode, double rsvTotalPrice, Date registDate, Date updDate, Date delDate) {
         this.rsvNo = rsvNo;
