@@ -31,7 +31,7 @@ public class TimeDao {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        String sql= prop.getProperty("timeSelectOne");
+        String sql = prop.getProperty("timeSelectOne");
         timeCode = "T" + timeCode;
 
         try {

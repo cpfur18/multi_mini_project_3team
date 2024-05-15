@@ -17,6 +17,7 @@ import static common.JDBCTemplate.close;
 public class ProductDao {
 
     private Properties prop = null;
+
     public ProductDao() {
         try {
             prop = new Properties();
@@ -25,6 +26,7 @@ public class ProductDao {
             e.printStackTrace();
         }
     }
+
     public ArrayList<Product> selectAll(Connection conn) throws Exception {
         ArrayList<Product> list = null;
 
@@ -56,5 +58,34 @@ public class ProductDao {
             close(ps);
         }
         return list;
+    }
+
+    public Product selectTotalMoney(Connection conn, ArrayList<String> prdInputList) throws Exception {
+        Product rsDto = null;
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        for (String productName : prdInputList) {
+            String sql = prop.getProperty("prdNameSelectAll");
+            try {
+                ps = conn.prepareStatement(sql);
+                ps.setString(1, productName);
+                rs = ps.executeQuery();
+
+                if (rs.next()) {
+                    rsDto = new Product();
+                    rsDto.setName(rs.getString("NAME"));
+                    rsDto.setPrice(rs.getInt("PRICE"));
+                }
+            } catch (SQLException e) {
+                throw new Exception(e.getMessage());
+
+            } finally {
+                close(ps);
+                close(rs);
+            }
+        }
+        return rsDto;
     }
 }

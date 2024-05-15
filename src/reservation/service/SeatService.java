@@ -1,8 +1,10 @@
 package reservation.service;
 
 import common.excption.Exception;
+import reservation.controller.SeatConrtoller;
 import reservation.model.dao.SeatDao;
 import reservation.model.dto.Seat;
+import reservation.view.SeatMenu;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -12,6 +14,8 @@ import static common.JDBCTemplate.getConnection;
 public class SeatService {
 
     private final SeatDao seatDao;
+    private SeatConrtoller seatConrtoller = new SeatConrtoller();
+
 
     public SeatService() {
         seatDao = new SeatDao();
@@ -31,7 +35,31 @@ public class SeatService {
         return seats;
     }
 
-    public String setSeatSql(String[] serviceCodes){
+    public ArrayList<Seat> isService(String timeCode, String service) {
+        SeatMenu seatMenu = new SeatMenu();
+        ArrayList<Seat> seatList = null;
+        if (service == null) {
+            seatList = seatConrtoller.selectAll(timeCode);
+            seatMenu.display(seatList);
+        } else {
+            seatList = seatConrtoller.selectAll2(timeCode, service);
+            seatMenu.display(seatList);
+        }
+        return seatList;
+    }
+
+    public boolean isSelectSeat(ArrayList<Seat> seatList, String answer) {
+        // anyMatch 최소한 한 개의 요소가 주어진 조건을 만족하는지 조사
+        // 입력받은 좌석이 있으면 TRUE
+        boolean isEmpty = seatList.stream().anyMatch(seat -> seat.getSeatCode().equals(answer));
+        if (isEmpty) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public String setSeatSql(String[] serviceCodes) {
         StringBuilder questionMarks = new StringBuilder();
         for (int i = 0; i < serviceCodes.length; i++) { // 문자 개수에 따라 ? 추가
             questionMarks.append("?");

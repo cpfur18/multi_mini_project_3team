@@ -3,43 +3,45 @@ package reservation.controller;
 import common.excption.Exception;
 import reservation.model.dto.Seat;
 import reservation.service.SeatService;
-import reservation.view.SeatMenu;
+import reservation.view.ViewUtils;
 
 import java.util.ArrayList;
 
 public class SeatConrtoller {
-    private SeatService seatService = new SeatService();
+
 
     public ArrayList<Seat> selectAll(String timeCode) {
+        ViewUtils viewUtils = new ViewUtils();
+        SeatService seatService = new SeatService();
         ArrayList<Seat> s = null;
-        SeatMenu menu = new SeatMenu();
         try {
             s = seatService.selectAll(timeCode);
             if (s != null) {
 
             }else{
-                System.out.println("데이터없음" + s);
+                viewUtils.printNoData();
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("조회실패" + s);
+            viewUtils.printQueryFailed();
         }
         return s;
     }
 
     public ArrayList<Seat> selectAll2(String timeCode, String serviceCode) {
+        SeatService seatService = new SeatService();
+        ViewUtils viewUtils = new ViewUtils();
         ArrayList<Seat> s = null;
-        SeatMenu menu = new SeatMenu();
         try {
             s = seatService.selectAll2(timeCode, serviceCode);
             if (s != null) {
 
             }else{
-                System.out.println("데이터없음" + s);
+                viewUtils.printNoData();
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("조회실패" + s);
+            viewUtils.printQueryFailed();
         }
         return s;
     }

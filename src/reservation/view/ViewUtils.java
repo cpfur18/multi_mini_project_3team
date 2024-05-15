@@ -13,8 +13,21 @@ public class ViewUtils {
     public static final String PURPLE = "\u001B[35m";
     public static final String CYAN = "\u001B[36m";
     public static final String WHITE = "\u001B[37m";
+
     public void printErrorMessage() {
         System.out.println("잘못된 입력 입니다.\n다시 입력해주세요.");
+    }
+
+    public void printNoData() {
+        System.out.println("데이터 없음");
+    }
+
+    public void printQueryFailed() {
+        System.out.println("조회에 실패했습니다.");
+    }
+
+    public void printMessage(String message) {
+        System.out.println(message);
     }
 
     public static void printColor(String color, String message) {
