@@ -1,13 +1,15 @@
 package run;
 
-import reservation.view.ReservationMenu;
+import notice.controller.NoticeController;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args){
         // 메인 실행 파일
 
         // Test
-        new ReservationMenu().resMainMenu();
+        NoticeController noticeController = new NoticeController();
+        noticeController.run();
+
     }
 
 }
