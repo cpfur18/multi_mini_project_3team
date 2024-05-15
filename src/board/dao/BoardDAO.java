@@ -57,8 +57,10 @@ public class BoardDAO{
             pstmt.setInt(3, post.getMemberNo());
 
             pstmt.executeUpdate();
+            conn.commit();
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback();
         }
     }
     public void modifyPost(Post post) {
@@ -71,8 +73,10 @@ public class BoardDAO{
             pstmt.setInt(3, post.getPostId());
 
             pstmt.executeUpdate();
+            conn.commit();
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback();
         }
     }
 
@@ -84,8 +88,10 @@ public class BoardDAO{
             pstmt.setInt(1, postId);
 
             pstmt.executeUpdate();
+            conn.commit();
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback();
         }
     }
 
@@ -97,5 +103,13 @@ public class BoardDAO{
             }
         }
         return null;
+    }
+
+    private void rollback() {
+        try (Connection conn = getConnection()) {
+            conn.rollback();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
