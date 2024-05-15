@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class ReservationMenu {
     private static Scanner sc = new Scanner(System.in); // Scanner 객체 생성
+    private ViewUtils viewUtils = new ViewUtils();
     int answer = 0;
 
     public void resMainMenu(){ // 예약 메인 화면(메서드 체인)
@@ -35,9 +36,9 @@ public class ReservationMenu {
                     break;
                 case 0:
                     // 회원 메인 화면으로 이동 - 추후 통합 예정
-                    break;
+                    return;
                 default:
-                    printErrorMessage();
+                    viewUtils.printErrorMessage();
             }
         } while (true);
     }
@@ -61,22 +62,20 @@ public class ReservationMenu {
             switch (answer) {
                 case 0:
                     System.out.println("이전 화면으로 돌아갑니다.");
-                    resMainMenu();
-                    break;
+                    return;
                 case 1:
                     System.out.println("예약 시간을 선택합니다.");
-
+                    new ServiceMenu().serviceMenu();
                     break;
                 default:
-                    printErrorMessage();
+                    viewUtils.printErrorMessage();
             }
         } while (true);
 
     }
 
+    public void payMent() {
 
-    public void printErrorMessage() {
-        System.out.println("없는 번호 입니다.\n번호를 다시 입력해주세요.");
     }
 
 }

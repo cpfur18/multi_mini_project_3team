@@ -1,12 +1,18 @@
 package reservation.view;
 
+import reservation.controller.TimeController;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class TimeMenu {
     private static Scanner sc = new Scanner(System.in); // Scanner 객체 생성
+    private ViewUtils viewUtils = new ViewUtils();
+    private TimeController timeController = new TimeController();
+
     int answer = 0; // 답변 저장
 
-    public void timeMenu(){
+    public void timeMenu(List<String> answerList){
         do {
             System.out.println("┌───────────────────────────────────────┐");
             System.out.println("│         카페 예약 관리 서비스         │");
@@ -32,22 +38,21 @@ public class TimeMenu {
             answer = sc.nextInt();
 
             switch (answer) {
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-
-                case 4:
-
-                case 5:
-
-                case 6:
-                    break;
-                default:
-                    new ReservationMenu().printErrorMessage();
+                case 1, 2, 3, 4, 5, 6 -> {
+                    timeSelect(answer);
+                    System.out.println("좌석 선택 화면으로 이동합니다.");
+                }
+                default -> viewUtils.printErrorMessage();
             }
         }while (true);
+    }
+
+    public void timeSelect(int answer) { // 시간 조회
+        timeController.selectOne(answer);
+    }
+
+    public void displayMessage(String message) {
+        System.out.println(message);
 
     }
 }
