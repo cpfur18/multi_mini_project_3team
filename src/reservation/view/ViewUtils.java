@@ -14,7 +14,7 @@ public class ViewUtils {
     public static final String CYAN = "\u001B[36m";
     public static final String WHITE = "\u001B[37m";
     public void printErrorMessage() {
-        System.out.println("없는 번호 입니다.\n번호를 다시 입력해주세요.");
+        System.out.println("잘못된 입력 입니다.\n다시 입력해주세요.");
     }
 
     public static void printColor(String color, String message) {

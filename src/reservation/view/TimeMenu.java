@@ -2,7 +2,6 @@ package reservation.view;
 
 import reservation.controller.TimeController;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class TimeMenu {
@@ -12,7 +11,7 @@ public class TimeMenu {
 
     int answer = 0; // 답변 저장
 
-    public void timeMenu(List<String> answerList){
+    public void timeMenu(String answerList, int size){
         do {
             System.out.println("┌───────────────────────────────────────┐");
             System.out.println("│         카페 예약 관리 서비스         │");
@@ -34,21 +33,23 @@ public class TimeMenu {
             System.out.println("│     │ 18:00     │     │ 20:00     │   │");
             System.out.println("│     └───────────┘     └───────────┘   │");
             System.out.println("└───────────────────────────────────────┘");
+            System.out.println("돌아가시려면 0을 입력해주세요.");
             System.out.printf("번호를 입력하세요 : ");
             answer = sc.nextInt();
 
             switch (answer) {
-                case 1, 2, 3, 4, 5, 6 -> {
-                    timeSelect(answer);
+                case 1: case 2: case 3: case 4: case 5:  case 6: {
+                    timeController.timeSelect(answer);
                     System.out.println("좌석 선택 화면으로 이동합니다.");
+                    String answer2 = "T" + answer;
+                    new SeatMenu().seatMenu(answer2, answerList);
                 }
-                default -> viewUtils.printErrorMessage();
+                case 0:
+                    System.out.println("이전 화면으로 이동합니다.");
+                    new ServiceMenu().serviceMenu();
+                default: viewUtils.printErrorMessage();
             }
         }while (true);
-    }
-
-    public void timeSelect(int answer) { // 시간 조회
-        timeController.selectOne(answer);
     }
 
     public void displayMessage(String message) {
