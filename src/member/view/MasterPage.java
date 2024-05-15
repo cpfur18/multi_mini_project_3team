@@ -1,21 +1,19 @@
 package member.view;
 
 import member.controller.MemberController;
-import member.model.dto.Member;
 
 import java.util.Scanner;
 
-public class MemberMenu {
+public class MasterPage {
 
     private static Scanner sc = new Scanner(System.in);
     private MemberController memberController = new MemberController();
 
-    //2. 메인페이지 - 회원페이지
-    public void memberMenu(Member m){
+    //3-3. 메인페이지 - 관리자페이지 - [회원관리 Masterpage]
+    public void masterPage(){
         int choice;
 
         do {
-            System.out.println("--> 회원 로그인 성공 ");
             System.out.println("┌───────────────────────────────────────┐");
             System.out.println("│                    카페 예약 관리 서비스 │");
             System.out.println("│              **티데이**                │");
@@ -23,12 +21,12 @@ public class MemberMenu {
             System.out.println("│                                       │");
             System.out.println("│                                       │");
             System.out.println("│                                       │");
+            System.out.println("│  [회원관리]                             │");
             System.out.println("│                                       │");
-            System.out.println("│                                       │");
-            System.out.println("│  1.마이페이지                           │"); //회원
-            System.out.println("│  2.게시글                              │");
-            System.out.println("│  3.예약                                │");
-            System.out.println("│  4.상품                                │");
+            System.out.println("│  1.회원 삭제                            │");
+            System.out.println("│  2.회원 정보 조회                       │");
+            System.out.println("│  3.회원 정보 수정                       │");
+            System.out.println("│  0.돌아가기                            │");
             System.out.println("└───────────────────────────────────────┘");
             System.out.println("번호를 선택하세요 : ");
 
@@ -36,22 +34,20 @@ public class MemberMenu {
 
             switch (choice) {
                 case 1:
-//                    memberController.mypage();
+//                    memberController.masterpage();
                     break;
                 case 2:
-                    //게시글
+//                    memberController.infoAccountAll();
                     break;
                 case 3:
-                    //예약
+//                    memberController.updateAccountOne();
                     break;
-                case 4:
-                    //상품
+                case 0:
+//                    masterMenu.open();
                     break;
-
                 default:
                     System.out.println("번호를 잘못입력하였습니다.");
             }
         } while (true);
     }
-
 }

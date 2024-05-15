@@ -1,21 +1,19 @@
 package member.view;
 
 import member.controller.MemberController;
-import member.model.dto.Member;
 
 import java.util.Scanner;
 
-public class MemberMenu {
+public class MyPage {
 
     private static Scanner sc = new Scanner(System.in);
     private MemberController memberController = new MemberController();
 
-    //2. 메인페이지 - 회원페이지
-    public void memberMenu(Member m){
+    //2-2. 메인페이지 - 회원페이지 - [마이페이지]
+    public void mypage(){
         int choice;
 
         do {
-            System.out.println("--> 회원 로그인 성공 ");
             System.out.println("┌───────────────────────────────────────┐");
             System.out.println("│                    카페 예약 관리 서비스 │");
             System.out.println("│              **티데이**                │");
@@ -23,12 +21,12 @@ public class MemberMenu {
             System.out.println("│                                       │");
             System.out.println("│                                       │");
             System.out.println("│                                       │");
+            System.out.println("│  [마이페이지]                           │");
             System.out.println("│                                       │");
-            System.out.println("│                                       │");
-            System.out.println("│  1.마이페이지                           │"); //회원
-            System.out.println("│  2.게시글                              │");
-            System.out.println("│  3.예약                                │");
-            System.out.println("│  4.상품                                │");
+            System.out.println("│  1.회원 탈퇴                           │");
+            System.out.println("│  2.회원 정보 조회                       │");
+            System.out.println("│  3.회원 정보 수정                       │");
+            System.out.println("│  0.돌아가기                            │");
             System.out.println("└───────────────────────────────────────┘");
             System.out.println("번호를 선택하세요 : ");
 
@@ -36,16 +34,16 @@ public class MemberMenu {
 
             switch (choice) {
                 case 1:
-//                    memberController.mypage();
+//                    memberController.deleteAccount();
                     break;
                 case 2:
-                    //게시글
+//                    memberController.infoAccount();
                     break;
                 case 3:
-                    //예약
+//                    memberController.updateAccount();
                     break;
-                case 4:
-                    //상품
+                case 0:
+//                    memberPage.open();
                     break;
 
                 default:
@@ -53,5 +51,6 @@ public class MemberMenu {
             }
         } while (true);
     }
+
 
 }
