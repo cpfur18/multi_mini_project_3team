@@ -1,6 +1,6 @@
 package reservation.service;
 
-import common.excption.TimeException;
+import common.excption.Exception;
 import reservation.model.dao.TimeDao;
 import reservation.model.dto.Time;
 
@@ -16,7 +16,7 @@ public class TimeService {
         timeDao = new TimeDao();
     }
 
-    public Time selectOne(String timeCode) throws TimeException {
+    public Time selectOne(String timeCode) throws Exception {
         Connection conn = getConnection();
         Time t = timeDao.selectOne(conn, timeCode);
 

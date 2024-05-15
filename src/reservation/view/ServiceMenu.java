@@ -85,11 +85,11 @@ public class ServiceMenu {
                         System.out.println("서비스가 삭제되었습니다.");
                         answerList.remove(Integer.toString(answer));
                     }
+                    break;
                 case 5:
                     System.out.println("서비스를 선택하지 않으셨습니다.");
                     System.out.println("예약 시간 선택 화면으로 이동합니다.");
-                    answerList.clear();
-                    new TimeMenu().timeMenu(answerList);
+                    new TimeMenu().timeMenu(null, 0);
                 default:
                     viewUtils.printErrorMessage();
             }
@@ -104,7 +104,12 @@ public class ServiceMenu {
                     case 0:
                         System.out.println("서비스 입력을 종료합니다.");
                         System.out.println("예약 시간 선택 화면으로 이동합니다.");
-                        new TimeMenu().timeMenu(answerList);
+                        List<String> answer2 = new ArrayList<>();
+                        for (String answer : answerList) {
+                            answer2.add("S" + answer);
+                        }
+                        String serviceString = String.join(", ", answer2);
+                        new TimeMenu().timeMenu(serviceString, answer2.size());
                         break;
                     default:
                         System.out.println("잘못된 입력입니다.");

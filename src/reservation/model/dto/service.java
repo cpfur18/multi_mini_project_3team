@@ -1,16 +1,10 @@
 package reservation.model.dto;
 
-import java.sql.Date;
+import java.io.Serializable;
 
-public class service {
-    private String timeCode;
-    private String rsvTimeCode;
-    private String rsvProductNo;
-    private int rsvTotalPrice;
-    private Date updDate;
-    private Date delDate;
+public class service implements Serializable {
 
-    public service() {
-        // TODO Auto-generated constructor stub
-    }
+    private static final long serialVersionUID = 123456789L;
+
+    public service() {}
 }
