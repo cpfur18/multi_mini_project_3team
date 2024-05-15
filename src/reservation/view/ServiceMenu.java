@@ -32,6 +32,7 @@ public class ServiceMenu {
                     break;
                 case 0:
                     System.out.println("예약 시간 선택 화면으로 이동합니다.");
+                    new TimeMenu().timeMenu(null);
                     break;
                 default:
                     viewUtils.printErrorMessage();
@@ -89,7 +90,7 @@ public class ServiceMenu {
                 case 5:
                     System.out.println("서비스를 선택하지 않으셨습니다.");
                     System.out.println("예약 시간 선택 화면으로 이동합니다.");
-                    new TimeMenu().timeMenu(null, 0);
+                    new TimeMenu().timeMenu(null);
                 default:
                     viewUtils.printErrorMessage();
             }
@@ -109,7 +110,7 @@ public class ServiceMenu {
                             answer2.add("S" + answer);
                         }
                         String serviceString = String.join(", ", answer2);
-                        new TimeMenu().timeMenu(serviceString, answer2.size());
+                        new TimeMenu().timeMenu(serviceString);
                         break;
                     default:
                         System.out.println("잘못된 입력입니다.");

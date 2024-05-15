@@ -7,7 +7,7 @@ public class ReservationMenu {
     private ViewUtils viewUtils = new ViewUtils();
     int answer = 0;
 
-    public void resMainMenu(){ // 예약 메인 화면(메서드 체인)
+    public void resMainMenu(){
         do {
             System.out.println("┌────────────────────────────────────────────────────┐");
             System.out.println("│                             카페 예약 관리 서비스  │");
@@ -30,7 +30,6 @@ public class ReservationMenu {
                     break;
                 case 2:
                     System.out.println("예약 조회를 선택하셨습니다.");
-                    
                     break;
                 case 0:
                     // 회원 메인 화면으로 이동 - 추후 통합 예정

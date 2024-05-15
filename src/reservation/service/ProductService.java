@@ -1,5 +1,6 @@
 package reservation.service;
 
+import common.excption.Exception;
 import reservation.model.dao.ProductDao;
 import reservation.model.dto.Product;
 import reservation.view.ViewUtils;
@@ -22,15 +23,24 @@ public class ProductService {
     }
 
     public String insertType(ArrayList<Product> products, String answer) {
+        boolean result = false;
         for (Product product : products) {
             if (product.getName().equals(answer)) {
-                return answer;
-            } else {
-                viewUtils.printErrorMessage();
-                answer = null;
+                result = true;
                 break;
             }
         }
+        if (!result) {
+            viewUtils.printErrorMessage();
+            answer = null;
+        }
         return answer;
+    }
+
+    public Product selectTotalMoney(ArrayList<String> prdInputList) throws Exception {
+        Connection conn = getConnection();
+        Product p = productDao.selectTotalMoney(conn, prdInputList);
+
+        return p;
     }
 }
