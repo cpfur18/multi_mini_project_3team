@@ -1,6 +1,6 @@
 package notice.service;
 
-import notice.dto.NoticeDAO;
+import notice.dao.NoticeDAO;
 import notice.model.Post;
 
 import java.util.List;

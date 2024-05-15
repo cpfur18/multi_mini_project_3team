@@ -1,4 +1,4 @@
-package notice.dto;
+package notice.dao;
 import notice.model.Post;
 
 import java.sql.*;
