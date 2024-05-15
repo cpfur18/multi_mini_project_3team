@@ -8,7 +8,6 @@ import reservation.view.TimeMenu;
 public class TimeController {
     private TimeService timeService = new TimeService();
     public void selectOne(int memberId) {
-//        TimeMenu tMenu = new TimeMenu();
         Time t = null;
         TimeMenu menu = new TimeMenu();
         try {

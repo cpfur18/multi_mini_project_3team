@@ -20,9 +20,7 @@ public class TimeDao {
         try {
             prop = new Properties();
             prop.load(new FileReader("resources/query.properties"));
-            //  prop.loadFromXML(new FileInputStream("mapper/query.xml"));
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -31,7 +29,7 @@ public class TimeDao {
         Time rsDto = null;
 
         PreparedStatement ps = null;
-        ResultSet rs = null;// Select 한후 결과값 받아올 객체
+        ResultSet rs = null;
 
         String sql= prop.getProperty("timeSelectOne");
         timeCode = "T" + timeCode;
@@ -41,7 +39,7 @@ public class TimeDao {
             ps.setString(1, timeCode);
             rs = ps.executeQuery();
 
-            if (rs.next()) { // 결과 집합에 데이터가 있는 경우에만 처리
+            if (rs.next()) {
                 rsDto = new Time();
                 rsDto.setStartTime(rs.getString("START_TIME"));
                 rsDto.setEndTime(rs.getString("END_TIME"));

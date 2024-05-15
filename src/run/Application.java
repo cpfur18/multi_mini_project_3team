@@ -8,6 +8,7 @@ public class Application {
 
         // Test
         new ReservationMenu().resMainMenu();
+//        new SeatMenu().seatMenu("T1", "S1, S2", 2);
     }
 
 }
