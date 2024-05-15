@@ -1,7 +1,5 @@
 package reservation.view;
 
-import reservation.controller.ReservationController;
-
 import java.util.Scanner;
 
 public class ReservationMenu {
