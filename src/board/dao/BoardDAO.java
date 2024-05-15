@@ -1,4 +1,4 @@
-package board.dto;
+package board.dao;
 import board.model.Post;
 
 import java.sql.*;
