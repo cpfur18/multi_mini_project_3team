@@ -57,8 +57,10 @@ public class NoticeDAO {
             pstmt.setInt(3, post.getMemberNo());
 
             pstmt.executeUpdate();
+            conn.commit();
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback();
         }
     }
     public void modifyPost(Post post) {
@@ -84,8 +86,10 @@ public class NoticeDAO {
             pstmt.setInt(1, postId);
 
             pstmt.executeUpdate();
+            conn.commit();
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback();
         }
     }
 
@@ -97,5 +101,13 @@ public class NoticeDAO {
             }
         }
         return null;
+    }
+
+    private void rollback() {
+        try (Connection conn = getConnection()) {
+            conn.rollback();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
