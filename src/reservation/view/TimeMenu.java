@@ -11,7 +11,7 @@ public class TimeMenu {
 
     int answer = 0; // 답변 저장
 
-    public void timeMenu(String serviceList){
+    public void timeMenu(String serviceList, int memberNO){
         do {
             System.out.println("┌───────────────────────────────────────┐");
             System.out.println("│         카페 예약 관리 서비스         │");
@@ -42,11 +42,11 @@ public class TimeMenu {
                     timeController.timeSelect(answer);
                     System.out.println("좌석 선택 화면으로 이동합니다.");
                     String answer2 = "T" + answer;
-                    new SeatMenu().seatMenu(answer2, serviceList);
+                    new SeatMenu().seatMenu(answer2, serviceList, memberNO);
                 }
                 case 0:
                     System.out.println("이전 화면으로 이동합니다.");
-                    new ServiceMenu().serviceMenu();
+                    new ServiceMenu().serviceMenu(memberNO);
                 default: viewUtils.printErrorMessage();
             }
         }while (true);

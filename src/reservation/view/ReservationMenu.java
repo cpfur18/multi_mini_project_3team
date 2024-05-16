@@ -7,7 +7,7 @@ public class ReservationMenu {
     private ViewUtils viewUtils = new ViewUtils();
     int answer = 0;
 
-    public void resMainMenu(){
+    public void resMainMenu(int memberNO){
         do {
             System.out.println("┌────────────────────────────────────────────────────┐");
             System.out.println("│                             카페 예약 관리 서비스  │");
@@ -26,10 +26,11 @@ public class ReservationMenu {
             switch (answer) {
                 case 1:
                     System.out.println("예약 하기를 선택하셨습니다.");
-                    reservation();
+                    reservation(memberNO);
                     break;
                 case 2:
                     System.out.println("예약 조회를 선택하셨습니다.");
+
                     break;
                 case 0:
                     // 회원 메인 화면으로 이동 - 추후 통합 예정
@@ -40,7 +41,7 @@ public class ReservationMenu {
         } while (true);
     }
 
-    public void reservation() { // 예약 시작
+    public void reservation(int memberNO) { // 예약 시작
         do {
             System.out.println("┌────────────────────────────────────────────────────┐");
             System.out.println("│                             카페 예약 관리 서비스  │");
@@ -62,7 +63,7 @@ public class ReservationMenu {
                     return;
                 case 1:
                     System.out.println("예약 시간을 선택합니다.");
-                    new ServiceMenu().serviceMenu();
+                    new ServiceMenu().serviceMenu(memberNO);
                     break;
                 default:
                     viewUtils.printErrorMessage();
@@ -70,9 +71,4 @@ public class ReservationMenu {
         } while (true);
 
     }
-
-    public void payMent() {
-
-    }
-
 }

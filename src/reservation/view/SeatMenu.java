@@ -14,7 +14,7 @@ public class SeatMenu {
     Scanner sc = new Scanner(System.in);
     String answer;
 
-    public void seatMenu(String timeCode, String serviceList) { // 좌석 선택 화면
+    public void seatMenu(String timeCode, String serviceList, int memberNO) { // 좌석 선택 화면
 
         String pattern = "[A-C][1-9]"; // 정규식 사용을 위한 변수
         ArrayList<Seat> seatList = null;
@@ -33,7 +33,7 @@ public class SeatMenu {
                 if (seatService.isSelectSeat(seatList, answer)) {
                     System.out.println(answer + " 좌석을 예약 하셨습니다.");
                     System.out.println("상품 선택 화면으로 이동합니다.");
-                    new ProductMenu().prdMainMenu(timeCode, serviceList, answer);
+                    new ProductMenu().prdMainMenu(timeCode, serviceList, answer, memberNO);
                     break;
                 } else {
                     System.out.println("선택한 좌석은 이미 예약된 좌석입니다.");

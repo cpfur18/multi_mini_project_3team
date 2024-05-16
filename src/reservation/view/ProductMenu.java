@@ -17,7 +17,7 @@ public class ProductMenu {
 
     int answer = 0;
 
-    public void prdMainMenu(String timeCode, String serviceList, String seatCode) {
+    public void prdMainMenu(String timeCode, String serviceList, String seatCode, int memberNO) {
         ArrayList<String> prdInputList = new ArrayList<>();
 
         do {
@@ -46,7 +46,7 @@ public class ProductMenu {
                     switch (answer2) {
                         case 0:
                             System.out.println("결제 화면으로 이동합니다.");
-                            new PayMenu().payMenu(timeCode, serviceList, seatCode, prdInputList);
+                            new PayMenu().payMenu(timeCode, serviceList, seatCode, prdInputList, memberNO);
                             break;
                         case 1:
                             break;
