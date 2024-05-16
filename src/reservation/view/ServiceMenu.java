@@ -9,7 +9,7 @@ public class ServiceMenu {
     private ViewUtils viewUtils = new ViewUtils();
     int answer = 0;
 
-    public void serviceMenu() { // 서비스 선택 화면
+    public void serviceMenu(int memberNO) { // 서비스 선택 화면
         do {
             System.out.println("┌────────────────────────────────────────────────────┐");
             System.out.println("│                             카페 예약 관리 서비스  │");
@@ -28,11 +28,11 @@ public class ServiceMenu {
             switch (answer) {
                 case 1:
                     System.out.println("서비스 선택 화면으로 이동합니다.");
-                    serviceMenu2();
+                    serviceMenu2(memberNO);
                     break;
                 case 0:
                     System.out.println("예약 시간 선택 화면으로 이동합니다.");
-                    new TimeMenu().timeMenu(null);
+                    new TimeMenu().timeMenu(null, memberNO);
                     break;
                 default:
                     viewUtils.printErrorMessage();
@@ -40,7 +40,7 @@ public class ServiceMenu {
         } while (true);
     }
 
-    public void serviceMenu2() { // 서비스 선택 화면에서 YES(1) 선택 시 동작
+    public void serviceMenu2(int memberNO) { // 서비스 선택 화면에서 YES(1) 선택 시 동작
         do {
             System.out.println("┌────────────────────────────────────────────────────┐");
             System.out.println("│                             카페 예약 관리 서비스  │");
@@ -57,12 +57,12 @@ public class ServiceMenu {
             System.out.println("│ 5. 선택 안함                                       │");
             System.out.println("└────────────────────────────────────────────────────┘");
 
-            inputService(); // 서비스 번호 입력
+            inputService(memberNO); // 서비스 번호 입력
 
         } while (true);
     }
 
-    public void inputService(){ // 번호 입력
+    public void inputService(int memberNO){ // 번호 입력
         List<String> answerList = new ArrayList<>();
         do {
             if (!answerList.isEmpty()){
@@ -90,7 +90,7 @@ public class ServiceMenu {
                 case 5:
                     System.out.println("서비스를 선택하지 않으셨습니다.");
                     System.out.println("예약 시간 선택 화면으로 이동합니다.");
-                    new TimeMenu().timeMenu(null);
+                    new TimeMenu().timeMenu(null, memberNO);
                 default:
                     viewUtils.printErrorMessage();
             }
@@ -110,7 +110,7 @@ public class ServiceMenu {
                             answer2.add("S" + answer);
                         }
                         String serviceString = String.join(", ", answer2);
-                        new TimeMenu().timeMenu(serviceString);
+                        new TimeMenu().timeMenu(serviceString, memberNO);
                         break;
                     default:
                         System.out.println("잘못된 입력입니다.");

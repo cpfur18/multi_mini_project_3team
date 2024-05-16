@@ -12,7 +12,7 @@ public class PayMenu {
     private ReservationController reservationController = new ReservationController();
     int answer;
 
-    public void payMenu(String timeCode, String serviceList, String seatCode, ArrayList<String> prdInputList) {
+    public void payMenu(String timeCode, String serviceList, String seatCode, ArrayList<String> prdInputList, int memberNO) {
         int totalMoney = new ProductController().selectTotalMoney(prdInputList);
         do {
             System.out.println("┌────────────────────────────────────────────────────┐");
@@ -34,15 +34,15 @@ public class PayMenu {
             switch (answer) {
                 case 0:
                     System.out.println("이전 화면으로 돌아갑니다.");
-                    new ProductMenu().prdMainMenu(timeCode, serviceList, seatCode);
+                    new ProductMenu().prdMainMenu(timeCode, serviceList, seatCode, memberNO);
                     return;
                 case 1: case 2:
                     System.out.println("결제가 완료되었습니다.");
 
-                    reservationController.insertReservation(timeCode, seatCode, totalMoney);
+                    reservationController.insertReservation(timeCode, seatCode, totalMoney, memberNO);
 
                     System.out.println("초기화면으로 돌아갑니다.");
-                    new ReservationMenu().resMainMenu();
+                    new ReservationMenu().resMainMenu(memberNO);
                     break;
                 default:
                     viewUtils.printErrorMessage();

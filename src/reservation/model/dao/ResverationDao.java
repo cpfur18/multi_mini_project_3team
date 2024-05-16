@@ -20,23 +20,21 @@ public class ResverationDao {
     }
 
     private Properties prop = null;
-    public int insertResveration(Connection conn, String timeCode, String seatCode, int totalMoney) throws Exception{
+    public int insertResveration(Connection conn, String timeCode, String seatCode, int totalMoney, int memberNO) throws Exception{
         int result = 0;
         PreparedStatement ps = null;
-
 
         String sql = prop.getProperty("revInsert");
 
         try {
             ps = conn.prepareStatement(sql);
 
-            ps.setString(1, seatCode );
-            ps.setString(2, timeCode );
-            ps.setInt(3, totalMoney );
+            ps.setInt(1, memberNO );
+            ps.setString(2, seatCode );
+            ps.setString(3, timeCode );
+            ps.setInt(4, totalMoney );
 
             result = ps.executeUpdate();
-
-            System.out.println(4);
 
         } catch (SQLException e) {
             throw new Exception("insert 에러 : " + e.getMessage());
@@ -44,8 +42,6 @@ public class ResverationDao {
         }finally {
             close(ps);
         }
-
-        System.out.println(result);
 
         return result;
     }

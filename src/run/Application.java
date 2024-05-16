@@ -9,7 +9,7 @@ public class Application {
         // Test
 //        new ProductMenu().prdMainMenu();
 //        new SeatMenu().seatMenu("T1", "S1, S2", 2);
-        new ReservationMenu().resMainMenu();
+        new ReservationMenu().resMainMenu(1);
 //        new PayMenu().payMenu(timeCode, serviceList);
     }
 
