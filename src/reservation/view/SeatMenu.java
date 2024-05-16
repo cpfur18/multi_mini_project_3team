@@ -50,8 +50,8 @@ public class SeatMenu {
 
         for (char s : seatPattern) {
             System.out.print("║ " + s + " | ");
-            for (int j = 1; j <= 9; j++) {
-                String seatCode = s + String.valueOf(j);
+            for (int i = 1; i <= 9; i++) {
+                String seatCode = s + String.valueOf(i);
                 // seatList를 돌면서 스트림으로 변환, anyMatch는 조건 만족하면 true, DTO에서 getSeatCode 호출 seatCode과 동일 시 빈 좌석
                 if (seatList.stream().anyMatch(seat -> seat.getSeatCode().equals(seatCode))) {
                     System.out.print("[ ]");
