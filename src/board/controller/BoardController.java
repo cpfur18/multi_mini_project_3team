@@ -8,8 +8,8 @@ import java.util.List;
 
 public class BoardController {
     BoardService boardService;
-    public static int memberNo = 3;
-    public static boolean admin = false;
+    public static int memberNo = 1;
+    public static boolean admin = true;
 
     public BoardController() {
         boardService = new BoardService();
